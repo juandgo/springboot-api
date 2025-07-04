@@ -1,0 +1,142 @@
+[
+  {
+    "nombreProducto": "Teclado Mecánico Redragon K552",
+    "descripcion": "Switches rojos, retroiluminado",
+    "precio": 850,
+    "cantidad": 50,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Mouse Logitech G502",
+    "descripcion": "Sensor Hero 25K, RGB",
+    "precio": 1200,
+    "cantidad": 75,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Monitor Samsung 27''",
+    "descripcion": "Full HD, 75Hz",
+    "precio": 3200,
+    "cantidad": 40,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Auriculares HyperX Cloud II",
+    "descripcion": "Sonido envolvente 7.1",
+    "precio": 1400,
+    "cantidad": 60,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Webcam Logitech C920",
+    "descripcion": "Resolución 1080p",
+    "precio": 1100,
+    "cantidad": 30,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Silla Gamer Cougar Armor",
+    "descripcion": "Reclinable, color negro y naranja",
+    "precio": 4500,
+    "cantidad": 20,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Laptop Dell Inspiron 15",
+    "descripcion": "Intel i5, 8GB RAM, 512GB SSD",
+    "precio": 9500,
+    "cantidad": 25,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Impresora HP DeskJet 2775",
+    "descripcion": "Multifunción inalámbrica",
+    "precio": 1800,
+    "cantidad": 35,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Disco Duro Externo Seagate 1TB",
+    "descripcion": "USB 3.0, portátil",
+    "precio": 1000,
+    "cantidad": 80,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Memoria USB Kingston 64GB",
+    "descripcion": "USB 3.1",
+    "precio": 250,
+    "cantidad": 150,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Tarjeta Gráfica NVIDIA RTX 3060",
+    "descripcion": "12GB GDDR6",
+    "precio": 6200,
+    "cantidad": 15,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Procesador AMD Ryzen 5 5600X",
+    "descripcion": "6 núcleos, 12 hilos",
+    "precio": 4200,
+    "cantidad": 18,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Placa Madre ASUS B550",
+    "descripcion": "Compatible con Ryzen, 4 slots RAM",
+    "precio": 3100,
+    "cantidad": 22,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Gabinete NZXT H510",
+    "descripcion": "ATX, ventana lateral de vidrio",
+    "precio": 2300,
+    "cantidad": 28,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Fuente EVGA 600W 80+ Bronze",
+    "descripcion": "Certificación de eficiencia",
+    "precio": 1300,
+    "cantidad": 32,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Cooler Master Hyper 212",
+    "descripcion": "Enfriamiento por aire, 120mm",
+    "precio": 900,
+    "cantidad": 45,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "SSD Kingston NV2 1TB",
+    "descripcion": "NVMe PCIe 4.0",
+    "precio": 1900,
+    "cantidad": 65,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Router TP-Link Archer C6",
+    "descripcion": "Wi-Fi de doble banda",
+    "precio": 750,
+    "cantidad": 70,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Tablet Samsung Galaxy Tab A8",
+    "descripcion": "10.5 pulgadas, 64GB",
+    "precio": 3500,
+    "cantidad": 38,
+    "estadoProducto": "DISPONIBLE"
+  },
+  {
+    "nombreProducto": "Repetidor WiFi Xiaomi Mi WiFi Range Extender",
+    "descripcion": "Hasta 300 Mbps",
+    "precio": 400,
+    "cantidad": 90,
+    "estadoProducto": "DISPONIBLE"
+  }
+]
