@@ -1,7 +1,9 @@
 package com.lta.cursoapis.curso_introduccion_apis.service.impl;
 
+import com.lta.cursoapis.curso_introduccion_apis.entity.Categoria;
 import com.lta.cursoapis.curso_introduccion_apis.entity.EstadoProducto;
 import com.lta.cursoapis.curso_introduccion_apis.entity.Producto;
+import com.lta.cursoapis.curso_introduccion_apis.repository.CategoriaRepository;
 import com.lta.cursoapis.curso_introduccion_apis.repository.ProductoRepository;
 import com.lta.cursoapis.curso_introduccion_apis.service.ProductoService;
 import lombok.SneakyThrows;
@@ -17,12 +19,25 @@ public class ProductoServiceImpl implements ProductoService {
     @Autowired
     private ProductoRepository productoRepository;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     @Override
-    public Producto registrarProducto(Producto producto) {
-//        Producto nuevoProducto = productoRepository.save(producto);
-//        return nuevoProducto;
+    @SneakyThrows
+    public Producto registrarProducto(Long categoriaId, Producto producto) {
+        Categoria categoria = categoriaRepository.findById(categoriaId)
+                .orElseThrow(()-> new Exception("Categoría con ID " + categoriaId + " no encontrada"));
+
+        producto.setCategoria(categoria);
         return productoRepository.save(producto);
     }
+
+//    @Override
+//    public Producto registrarProducto(Producto producto) {
+////        Producto nuevoProducto = productoRepository.save(producto);
+////        return nuevoProducto;
+//        return productoRepository.save(producto);
+//    }
 
     @Override
     public List<Producto> listarProductos() {
@@ -54,7 +69,13 @@ public class ProductoServiceImpl implements ProductoService {
          productoExistente.setPrecio(producto.getPrecio());
          productoExistente.setCantidad(producto.getCantidad());
          productoExistente.setEstadoProducto(producto.getEstadoProducto());
-         return productoRepository.save(producto);
+
+         if (producto.getCategoria() != null && producto.getCategoria().getIdCategoria() != null){
+             Categoria categoria = categoriaRepository.findById(producto.getCategoria().getIdCategoria())
+                     .orElseThrow(()-> new Exception("Categoria no encontrada"));
+             productoExistente.setCategoria(categoria);
+         }
+         return productoRepository.save(productoExistente);
     }
 
     @Override

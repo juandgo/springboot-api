@@ -36,7 +36,7 @@ public class ProductoController {
         producto.setCantidad(cantidad);
         producto.setEstadoProducto(estado);
 
-        Producto productoBBDD = productoService.registrarProducto(producto);
+        Producto productoBBDD = productoService.registrarProducto(categoriaId, producto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(producto);
     }

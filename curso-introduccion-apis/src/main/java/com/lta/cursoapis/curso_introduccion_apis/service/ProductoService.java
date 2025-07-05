@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ProductoService {
 
-    Producto registrarProducto(Producto producto);
+    Producto registrarProducto(Long categoriaId, Producto producto);
 
     List<Producto> listarProductos();
     Optional<Producto> buscarPorNombre(String nombre);
