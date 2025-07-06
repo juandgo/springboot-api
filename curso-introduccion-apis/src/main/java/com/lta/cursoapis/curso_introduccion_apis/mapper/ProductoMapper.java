@@ -14,11 +14,15 @@ public class ProductoMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    public CategoriaDTO toDTO(Categoria categoria){
-        return modelMapper.map(categoria, CategoriaDTO.class);
+    public Producto toEntity(ProductoDTO productoDTO){
+        return modelMapper.map(productoDTO,Producto.class);
     }
 
-    public Categoria toEntity(CategoriaDTO categoriaDTO){
-        return modelMapper.map(categoriaDTO,Categoria.class);
+    public void toEntity(ProductoDTO productoDTO,Producto productoExistente){
+        modelMapper.map(productoDTO,productoExistente);
+    }
+
+    public ProductoDTO toDTO(Producto producto){
+        return modelMapper.map(producto,ProductoDTO.class);
     }
 }

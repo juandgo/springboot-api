@@ -16,10 +16,14 @@ import lombok.NoArgsConstructor;
 public class ProductoDTO {
 
     private Long idProducto;
+
     @NotBlank(message = "El nombre del producto no puede estar vacío")
-    @Size(max = 100, message = "El nombre del producto no debe exceder los 100 caracteres")
+    @Size(max = 100, message = "El nombre del producto no debe exceder de los 100 caracteres")
     private String nombreProducto;
-    @Size(max = 255, message = "La descripción no debe exceder los 100 caracteres")
+
+    @Size(max = 255, message = "La descripción no debe exceder de los 255 caracteres")
+    private String descripcion;
+
     @NotNull(message = "El precio es obligatorio")
     @Min(value = 0, message = "El precio debe ser mayor o igual a 0")
     private Double precio;

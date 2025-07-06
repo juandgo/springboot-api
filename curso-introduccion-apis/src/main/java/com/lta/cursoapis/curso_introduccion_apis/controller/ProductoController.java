@@ -1,5 +1,6 @@
 package com.lta.cursoapis.curso_introduccion_apis.controller;
 
+import com.lta.cursoapis.curso_introduccion_apis.dto.ProductoDTO;
 import com.lta.cursoapis.curso_introduccion_apis.entity.Categoria;
 import com.lta.cursoapis.curso_introduccion_apis.entity.EstadoProducto;
 import com.lta.cursoapis.curso_introduccion_apis.entity.Producto;
@@ -29,35 +30,35 @@ public class ProductoController {
             @RequestParam("precio") Double precio,
             @RequestParam("cantidad") int cantidad,
             @RequestParam("estado") EstadoProducto estado) {
-        Producto producto = new Producto();
-        producto.setNombreProducto(nombreProducto);
-        producto.setDescripcion(descripcion);
-        producto.setPrecio(precio);
-        producto.setCantidad(cantidad);
-        producto.setEstadoProducto(estado);
+        ProductoDTO productoDTO = new ProductoDTO();
+        productoDTO.setNombreProducto(nombreProducto);
+        productoDTO.setDescripcion(descripcion);
+        productoDTO.setPrecio(precio);
+        productoDTO.setCantidad(cantidad);
+        productoDTO.setEstado(estado);
 
-        Producto productoBBDD = productoService.registrarProducto(categoriaId, producto);
+        ProductoDTO productoBBDD = productoService.registrarProducto(categoriaId, productoDTO);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(producto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productoBBDD);
     }
 
     @GetMapping
-    public ResponseEntity<List<Producto>> listarProductos() {
-        List<Producto> productos = productoService.listarProductos();
-        return ResponseEntity.ok(productos);
+    public ResponseEntity<List<ProductoDTO>> listarProductos() {
+        List<ProductoDTO> productosDtos = productoService.listarProductos();
+        return ResponseEntity.ok(productosDtos);
     }
 
     @GetMapping("/buscar/nombre/{nombre}")
     public ResponseEntity<?> buscarPorNombre(@PathVariable String nombre) {
-        Optional<Producto> producto = productoService.buscarPorNombre(nombre);
-        return producto.isPresent() ? ResponseEntity.ok(producto.get())
+        Optional<ProductoDTO> productoDTO = productoService.buscarPorNombre(nombre);
+        return productoDTO.isPresent() ? ResponseEntity.ok(productoDTO.get())
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado");
     }
 
     @GetMapping("/buscar/id/{idProducto}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long idProducto) {
-        Optional<Producto> producto = productoService.buscarPorId(idProducto);
-        return producto.isPresent() ? ResponseEntity.ok(producto.get())
+        Optional<ProductoDTO> productoDTO = productoService.buscarPorId(idProducto);
+        return productoDTO.isPresent() ? ResponseEntity.ok(productoDTO.get())
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado");
     }
 
@@ -71,22 +72,14 @@ public class ProductoController {
             @RequestParam("cantidad") int cantidad,
             @RequestParam("estado") EstadoProducto estado) {
         try {
-//            Producto productoActualizado = new Producto();
-            // productoActualizado.setIdProducto(idProducto);
-            // productoActualizado.setNombreProducto(producto.getNombreProducto());
-            // productoActualizado.setPrecio(producto.getPrecio());
-            // productoActualizado.setDescripcion(producto.getDescripcion());
-            // productoActualizado.setCantidad(producto.getCantidad());
-            // productoActualizado.setEstadoProducto(producto.getEstadoProducto());
-            Producto producto = new Producto();
-            producto.setNombreProducto(nombreProducto);
-            producto.setDescripcion(descripcion);
-            producto.setPrecio(precio);
-            producto.setCantidad(cantidad);
-            producto.setEstadoProducto(estado);
+            ProductoDTO productoDTO = new ProductoDTO();
+            productoDTO.setNombreProducto(nombreProducto);
+            productoDTO.setDescripcion(descripcion);
+            productoDTO.setPrecio(precio);
+            productoDTO.setCantidad(cantidad);
+            productoDTO.setEstado(estado);
 
-//            Producto productoBBDD = productoService.actualizarProducto(idProducto, productoActualizado);
-            Producto productoActualizado = productoService.actualizarProducto(idProducto, producto);
+            ProductoDTO productoActualizado = productoService.actualizarProducto(idProducto, productoDTO);
             return ResponseEntity.ok(productoActualizado);
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
@@ -111,7 +104,7 @@ public class ProductoController {
     public ResponseEntity<?> cambiarEstadoProducto(@PathVariable Long idProducto,
             @RequestBody EstadoProducto estadoProducto) {
         try {
-            Producto productoActualizado = productoService.cambiarEstadoProducto(idProducto, estadoProducto);
+            ProductoDTO productoActualizado = productoService.cambiarEstadoProducto(idProducto, estadoProducto);
             return ResponseEntity.ok(productoActualizado);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // 404 sin cuerpo
@@ -119,8 +112,8 @@ public class ProductoController {
     }
 
     @GetMapping("/estado/{estado}")
-    public ResponseEntity<List<Producto>> listarProductosPorEstado(@PathVariable EstadoProducto estado) {
-        List<Producto> productos = productoService.obtenerProductosPorEstado(estado);
-        return ResponseEntity.ok(productos);
+    public ResponseEntity<List<ProductoDTO>> listarProductosPorEstado(@PathVariable EstadoProducto estado) {
+        List<ProductoDTO> productoDTOS = productoService.obtenerProductosPorEstado(estado);
+        return ResponseEntity.ok(productoDTOS);
     }
 }
