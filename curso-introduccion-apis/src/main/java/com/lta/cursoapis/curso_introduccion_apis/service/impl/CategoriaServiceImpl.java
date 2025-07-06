@@ -1,10 +1,11 @@
 package com.lta.cursoapis.curso_introduccion_apis.service.impl;
 
 import com.lta.cursoapis.curso_introduccion_apis.entity.Categoria;
+import com.lta.cursoapis.curso_introduccion_apis.exceptions.BadRequestException;
+import com.lta.cursoapis.curso_introduccion_apis.exceptions.ResourceNotFoudException;
 import com.lta.cursoapis.curso_introduccion_apis.repository.CategoriaRepository;
 import com.lta.cursoapis.curso_introduccion_apis.service.CategoriaService;
 import lombok.SneakyThrows;
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,6 @@ public class CategoriaServiceImpl implements CategoriaService {
     private CategoriaRepository categoriaRepository;
 
     @Override
-    @SneakyThrows
     public Categoria crearCategoria(Categoria categoria) {
         if(categoriaRepository.existsByNombreCategoria(categoria.getNombreCategoria())){
             throw new BadRequestException("Ya existe una categoría con ese nombre.");
@@ -37,21 +37,19 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
-    @SneakyThrows
     public Categoria actualizarCategoria(Long idCategoria, Categoria categoria) {
         Categoria categoriaExistente = categoriaRepository.findById(idCategoria)
-                .orElseThrow(() -> new Exception("Categoría no encontrada"));
+                .orElseThrow(() -> new ResourceNotFoudException("Categoría no encontrada"));
 
         categoriaExistente.setNombreCategoria(categoria.getNombreCategoria());
         return categoriaRepository.save(categoriaExistente);
     }
 
     @Override
-    @SneakyThrows
     public void eliminarCategoria(Long idCategoria) {
         Optional<Categoria> categoriaExitente = categoriaRepository.findById(idCategoria);
         if (!categoriaExitente.isPresent()){
-            throw new Exception("Categoría no encontrada para eliminar.");
+            throw new ResourceNotFoudException("Categoría no encontrada para eliminar.");
         }
         categoriaRepository.deleteById(idCategoria);
     }

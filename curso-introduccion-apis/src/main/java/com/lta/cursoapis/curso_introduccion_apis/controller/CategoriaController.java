@@ -1,7 +1,9 @@
 package com.lta.cursoapis.curso_introduccion_apis.controller;
 
 import com.lta.cursoapis.curso_introduccion_apis.entity.Categoria;
+import com.lta.cursoapis.curso_introduccion_apis.exceptions.ResourceNotFoudException;
 import com.lta.cursoapis.curso_introduccion_apis.service.CategoriaService;
+import jakarta.validation.Valid;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +21,7 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @PostMapping
-    public ResponseEntity<Categoria> crearCategoria(@RequestBody Categoria categoria) throws BadRequestException {
+    public ResponseEntity<Categoria> crearCategoria(@Valid @RequestBody Categoria categoria) throws BadRequestException {
         Categoria nuevaCategoria = categoriaService.crearCategoria(categoria);
         return new ResponseEntity<>(nuevaCategoria, HttpStatus.CREATED);
     }
@@ -36,7 +38,7 @@ public class CategoriaController {
         if(categoriaOptional.isPresent()){
             return new ResponseEntity<>(categoriaOptional.get(),HttpStatus.OK);
         }else{
-            throw new Exception("Categoria no encontrada");
+            throw new ResourceNotFoudException("Categoria no encontrada");
         }
     }
 
@@ -47,7 +49,7 @@ public class CategoriaController {
             if (categoriaActualizada != null){
                 return new ResponseEntity<>(categoriaActualizada, HttpStatus.OK);
             }else{
-                throw new Exception("Categoria no encontrada para actualizar");
+                throw new ResourceNotFoudException("Categoria no encontrada para actualizar");
             }
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.OK);
